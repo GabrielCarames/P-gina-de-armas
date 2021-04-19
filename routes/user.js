@@ -18,7 +18,7 @@ router.post('/register', passport.authenticate('register',
   {
     successRedirect: '/user/login',
     failureRedirect: '/user/register',
-    failureFlash: true,a
+    failureFlash: true,
     passReqToCallback: true
   }
 ));
