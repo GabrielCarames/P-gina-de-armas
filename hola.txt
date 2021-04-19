@@ -1,0 +1,31 @@
+T.P. N°1 - Página de armas
+Consigna general: A lo largo de este mes van a tener que hacer una página de armas desde cero y de forma completa, con conexión a una base de datos, seguridad, autenticadores, etc.
+La página debe tener como mínimo las siguientes secciones:
+-Inicio: Pestaña principal de inicio de la propia página. Tiene que contener información introductoria de la página como fotos, texto, breve explicación, etc.
+-Armas: Sección en donde se podrán visualizar y agregar a un carrito las armas seleccionadas. Se debe informar su precio, foto, breve texto.
+-Carrito: Sección en donde se visualizarán y almacenarán las armas seleccionadas en la anterior sección.
+-Ayuda: Agregar posibles preguntas frecuentes, acceso a un ticket a soporte técnico con formulario de datos, etc.
+-Registro: Permitir al usuario registrarse con sus datos.
+-Login: Permitir al usuario ingresar con sus datos.
+
+Consideraciones:
+1- Tanto el navbar como el footer de la página, deben estar unicamente en un archivo main.hbs.
+2- A la hora en que el usuario se conecta con su cuenta, ocultar boton de registro/login y mostrar uno de "perfil". (Luego al clickear en el perfil, dirigir a una nueva página con info del usuario.)
+3- Todo aquel diseño que se desea aplicar al html, debe estar OBLIGATORIAMENTE separado en su archivo .css.
+4- Ser lógicos con los nombres de variables, secciones, ids y lo que sea que se este nombrando.
+5- IMPORTANTE: Si en algún momento se quedan estancados tratando de hacer algo (ejemplo: centrar una foto en tal lugar de la página), googlearlo. Toda consulta que pueda resultar obvia, no será tomada en cuenta.
+Para programar no siempre se sabe que hacer en cada momento, por eso es importante que aprendan a buscar ayuda en google, videos, etc. 
+En caso de que hayan buscado a muerte y no pudieron resolver el problema, ahi si consultarnos.
+
+Clase N°1 - 19-04-21
+Consigna: 
+1- Generar estructura general de express
+2- Crear carpeta "layouts" dentro de "views". Luego crear archivo "main.hbs" dentro de "layouts".
+3- Establecer un navbar y footer correspondientes al main.
+4- Crear un index completo. (Solo parte visual)
+5- RECOMENDACIÓN: Realizar un commit por cada paso que consideren importante. Si agregan un "carousel" al index, commit. Si agregan una parte al index, commit.
+
+Consideraciones: 
+-Tienen hasta el miercoles para terminar esta primera parte. 
+-Solo centrense en la parte visual. A partir del jueves empezamos la parte de JavaScript con lo que tengan hecho.
+
