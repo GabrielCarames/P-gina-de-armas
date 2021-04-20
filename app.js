@@ -11,6 +11,7 @@ require('./passport/authenticator');
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
+var weaponRouter = require('./routes/weapon');
 
 var app = express();
 
@@ -40,5 +41,6 @@ require("./db");
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/weapon', weaponRouter);
 
 module.exports = app;

@@ -23,4 +23,12 @@ router.post('/register', passport.authenticate('register',
   }
 ));
 
+router.post('/login', passport.authenticate('login',
+  {
+    successRedirect: '/',
+    failureRedirect: '/user/login',
+    passReqToCallback: true
+  }
+));
+
 module.exports = router;
