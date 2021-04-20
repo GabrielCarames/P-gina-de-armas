@@ -1,4 +1,4 @@
-<form action="/user/login" method="POST" style="padding-left: 600px; width: 1300px;padding-top: 50px;">
+<form action="/user/login" method="POST">
   <h2 style="text-align: center;">Ingreso</h2>
   <div class="form-group" style="margin-top: 30px;">
     <label for="exampleInputEmail1">Correo electrónico</label>
@@ -13,16 +13,16 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1" /required>
     <label class="form-check-label" for="exampleCheck1">No soy un robot</label>
   </div>
-  <button type="submit" class="btn btn-secundary" style="background-color: #666666; color: white;" role="Ingresar">
+  <button type="submit" class="btn btn-secundary" id="button" role="Ingresar">
     Entrar
   </button>
 </form>
 <a href="#" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 1150px;">Olvide mi
   contraseña</a>
-<div style="padding-top: 30px; text-align: center; color: white;">
+<div id="register">
   <h3>
     ¿No tienes una cuenta?
-    <a class="btn btn-secundary" style="background-color: #666666; color: white;"
+    <a class="btn btn-secundary" id="button"
       href="http://localhost:3000/user/register/" role="Ingresar">Registrate ahora!</a>
   </h3>
 </div>
@@ -56,8 +56,7 @@
           Guardar cambios
         </button>
       </div>
-      <!--<meta http-equiv="refresh" content="2" />-->
     </div>
   </div>
 </div>
-<hr style="height: 24vh;border-color:white">
+<hr id="spacer">
