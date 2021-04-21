@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
 const Weapon = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     name: {
         type: String,
         required: true
@@ -13,6 +17,10 @@ const Weapon = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    condition: {
+        type: String,
+        required: false
     },
     image: {
         type: String,

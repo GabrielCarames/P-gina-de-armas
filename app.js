@@ -6,7 +6,7 @@ const passport = require('passport');
 const session = require('express-session'); 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const flash = require('connect-flash');
 require('./passport/authenticator');
 
 var indexRouter = require('./routes/index');
@@ -22,8 +22,6 @@ app.engine('hbs', exphbs({
 }));
 app.set('view engine', 'hbs');
 
-
-
 app.use(session({
   secret: "clave secreta",
   resave: false,
@@ -31,6 +29,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(logger('dev'));
 app.use(express.json());

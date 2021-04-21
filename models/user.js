@@ -39,6 +39,12 @@ const User = new Schema({
             ref: 'Notification',
         }
     ],
+    weapons: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Weapon',
+        }
+    ],
     createdAt: {
          type: Date, 
          default: Date.now
