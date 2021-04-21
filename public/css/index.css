@@ -1,0 +1,66 @@
+#carousel a{
+    background-color: rgb(7, 38, 73);
+  }
+  
+  .carousel .carousel-item {
+    height: 500px;
+  }
+  
+  /*.image {
+    width: 50%;
+     margin: auto;
+  }*/
+  
+  #divider{
+    height:100px;background-color: rgba(32,60,92,255);padding: 30px 0;
+  }
+  
+  #divider h2{
+    text-align: center;color:white;
+  }
+  
+  #articulos .card{
+    width: 18rem;
+  }
+  
+  .image1{
+    margin: auto;
+  }
+  
+  .image2{
+    width: 400px;
+  }
+  
+  .image3{
+    width: 800px;
+  }
+  
+  .carousel p{
+    color: rgb(32, 32, 32);
+  }
+  
+  .card-group{
+    width: 1345px;
+  }
+  
+  /*#articulos{
+    background-color: rgb(136,148,164);
+  }*/
+  
+  #articulos a{
+    background-color: rgba(32,60,91,255);
+  }
+  
+  #categorias{
+    margin-top:30px;
+    margin-bottom:30px;
+  }
+  
+  #categorias .card{
+    max-width: 500px;
+  }
+  
+  #pintado{
+    background-color: rgba(32,60,91,255);
+    color:white
+  }

@@ -15,7 +15,6 @@ var weaponRouter = require('./routes/weapon');
 
 var app = express();
 
-// hbs engine settings
 app.engine('hbs', exphbs({
   defaultLayout: 'main',
   partialsDir: __dirname + '/views/partials',
@@ -23,7 +22,8 @@ app.engine('hbs', exphbs({
 }));
 app.set('view engine', 'hbs');
 
-// passport settings
+
+
 app.use(session({
   secret: "clave secreta",
   resave: false,
@@ -37,10 +37,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-require("./db");
+
+/*app.use((req, res, next) => {
+  if(req.isAuthenticated()){
+    console.log("sosreputo")
+    var user = req.user
+    res.locals.user = user
+  }
+  next();
+});*/
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/weapon', weaponRouter);
+
+require("./db");
 
 module.exports = app;
