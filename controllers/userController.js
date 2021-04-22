@@ -1,5 +1,11 @@
 const User = require('../models/user');
 
+exports.isAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect('/');
+}
+
 exports.addWeapon = async (userId, newWeapon) => {
     await User.findOneAndUpdate({ _id: userId },
         {
@@ -18,7 +24,16 @@ exports.createUser = async (values) => {
 }
 
 exports.findById = async (id) => {
-    return User.findById(id)
+    return User.findById(id).populate([
+        {
+            path: 'weapons',
+            model: 'Weapon',
+            populate: {
+                path: 'from',
+                model: 'User'
+            }
+        }
+    ])
 }
 
 exports.findByUsername = async (name) => {
@@ -30,3 +45,7 @@ exports.findByEmail = async (email) => {
     return User.findOne({ 'email': email })
 }
 
+exports.getWeapons = async (userId) => {
+    const user = await this.findById(userId)
+    return user.weapons
+}

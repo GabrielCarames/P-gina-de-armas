@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+const userController = require('../controllers/userController')
+const weaponController = require('../controllers/weaponController')
 
 router.get('/', function(req, res) {
   res.send('respond with a resource');
@@ -35,5 +37,16 @@ router.get('/logout', function (req, res) {
   req.logout()
   res.redirect('/')
 });
+
+router.get('/getweapons', userController.isAuthenticated, async function (req, res) {
+  const userId = req.user._id
+  const weapons = await userController.getWeapons(userId)
+  console.log(weapons)
+  if(weapons.length){
+    res.send({status: true, weapons})
+  }else{
+    res.send({status: false, message: 'No tienes armas disponibles.'})
+  }
+})
 
 module.exports = router;

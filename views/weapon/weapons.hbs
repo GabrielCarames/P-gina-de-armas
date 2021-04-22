@@ -1,3 +1,28 @@
 <li class="nav-item">
-        <a class="nav-link" href="/weapon/uploadweapon">subiArmas</a>
-      </li>
+  <a class="nav-link" href="/weapon/uploadweapon">subiArmas</a>
+</li>
+<div id="weaponsPanel">
+
+</div>
+
+<script>
+  var weaponsPanel = document.getElementById('weaponsPanel');
+  $.get("http://localhost:3000/user/getweapons", data => {
+    console.log(data.weapons)
+    if (data.status) {
+      $.each(data.weapons, function() {
+        weaponsPanel.innerHTML += 
+          '<div class="col-3">' +
+              '<img src="' + this.avatar + '" class="avatarImg" alt="wow">' +
+          '</div>' +
+          '<div class="col-7">' +
+              '<div class="row d-flex align-items-center" style="height:30%;"> ' +
+                  '<a>'+ this.name + '</a>' +
+              '</div>' +
+          '</div>'
+      })
+    } else {
+        weaponsPanel.innerHTML += data.message
+    }
+  })
+</script>
