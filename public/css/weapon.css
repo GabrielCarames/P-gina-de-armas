@@ -7,4 +7,20 @@ form{
 #spacer {
     height: 16.4vh;
     border-color: white;
-  }
+}
+
+.card{
+    width: 300px;   
+}
+
+#itemsPanel{
+    padding-left: 180px;
+}
+
+#weaponsPanel{
+    width: 1000px;
+}
+
+#carritoPanel{
+    padding-left: 40px;
+}

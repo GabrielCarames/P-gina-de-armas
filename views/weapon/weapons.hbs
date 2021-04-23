@@ -1,28 +1,71 @@
+<link rel='stylesheet' href='/css/weapon.css' />
 <li class="nav-item">
   <a class="nav-link" href="/weapon/uploadweapon">subiArmas</a>
 </li>
-<div id="weaponsPanel">
+<div class="row">
+  <div class="col-3" id="itemsPanel">
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Categorías</div>
+      <div class="card-body">
+        <p class="card-text">Todas las categorías<br>Pistolas<br>Fusiles de asalto<br>Escopetas<br>Fusiles de francotirador<br>Subfusiles</p>
+      </div>
+    </div>
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Precio</div>
+      <div class="card-body">
+        <p class="card-text">Cualquier rango de precio<br>Hasta $2000<br>Hasta $5000<br>Hasta $10000<br>Hasta $30000<br>Hasta $50000<br>Entre x y x</p>
+      </div>
+    </div>
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Tipo de munición</div>
+      <div class="card-body">
+        <p class="card-text">Todas las municiones<br>9mm<br>7,65mm<br>a<br>a<br>a</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="row" id="weaponsPanel">
+
+    </div>
+  </div>
+  <div class="col-3" id="carritoPanel">
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Carrito</div>
+      <div class="card-body">
+        <p class="card-text">Glock<br>Lanzallamas<br>358 granadas<br>Lanzacohete<br>Minigun</p>
+      </div>
+    </div>
+  </div>
 
 </div>
+
 
 <script>
   var weaponsPanel = document.getElementById('weaponsPanel');
   $.get("http://localhost:3000/user/getweapons", data => {
     console.log(data.weapons)
     if (data.status) {
-      $.each(data.weapons, function() {
-        weaponsPanel.innerHTML += 
-          '<div class="col-3">' +
-              '<img src="' + this.avatar + '" class="avatarImg" alt="wow">' +
+      $.each(data.weapons, function () {
+        weaponsPanel.innerHTML +=
+          '<div class="col-4">' +
+          '<div class="card justify-content-center">' +
+          '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">' +
+          '<img src="' + this.image + '" id="weaponImage" class="img-fluid"" alt="wow">' +
+          '<a href="#!">' +
+          '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>' +
+          '</a>' +
           '</div>' +
-          '<div class="col-7">' +
-              '<div class="row d-flex align-items-center" style="height:30%;"> ' +
-                  '<a>'+ this.name + '</a>' +
-              '</div>' +
+          '<div class="card-body">' +
+          '<h5 class="card-title">' + this.name + '</h5>' +
+          '<p class="card-text">' + this.description +
+          '</p>' +
+          '<a href="#!" class="btn btn-primary" style="background-color: rgba(32,60,91,255);">Button</a>' +
+          '</div>' +
+          '</div>' +
           '</div>'
       })
     } else {
-        weaponsPanel.innerHTML += data.message
+      weaponsPanel.innerHTML += data.message
     }
   })
 </script>
