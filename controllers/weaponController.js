@@ -21,3 +21,7 @@ exports.getAllWeapons = async () => {
 exports.getAllWeaponsCategory = async (category) => {
     return Weapon.find({'category': category}).lean()
 }
+
+exports.getAllWeaponsPrice = async (price) => {
+    return Weapon.find({'price': { $lte: price} }).lean()
+}

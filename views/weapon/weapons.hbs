@@ -9,17 +9,26 @@
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Categorías</div>
       <div class="card-body">
-        <p class="card-text"> <a href="/weapon/">Todas las categorías</a><br><a
-            href="/weapon/weaponcategory/gun">Pistolas</a><br><a href="/weapon/weaponcategory/assault_rifle">Fusiles de asalto</a><br>
-            <a href="/weapon/weaponcategory/shotgun">Escopetas</a><br><a href="/weapon/weaponcategory/sniper_rifle">Fusiles de
-          francotirador</a><br><a href="/weapon/weaponcategory/submachine_gun">Subfusiles</a></p>
+        <p class="card-text"> 
+            <a href="/weapon/">Todas las categorías</a><br>
+            <a href="/weapon/weaponcategory/gun">Pistolas</a><br>
+            <a href="/weapon/weaponcategory/assault_rifle">Fusiles de asalto</a><br>
+            <a href="/weapon/weaponcategory/shotgun">Escopetas</a><br>
+            <a href="/weapon/weaponcategory/sniper_rifle">Fusiles de francotirador</a><br>
+            <a href="/weapon/weaponcategory/submachine_gun">Subfusiles</a></p>
       </div>
     </div>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Precio</div>
       <div class="card-body">
-        <p class="card-text">Cualquier rango de precio<br>Hasta $2000<br>Hasta $5000<br>Hasta $10000<br>Hasta
-          $30000<br>Hasta $50000<br>Entre x y x</p>
+        <p class="card-text">Cualquier rango de precio<br>
+        <a href="/weapon/weaponprice/2000">Hasta $2000</a><br>
+        <a href="/weapon/weaponprice/5000">Hasta $5000</a><br>
+        <a href="/weapon/weaponprice/10000">Hasta $10000</a><br>
+        <a href="/weapon/weaponprice/30000">Hasta $30000</a> <br>
+        <a href="/weapon/weaponprice/50000">Hasta $50000</a><br>
+        <a href="">Entre x y x</a> 
+        </p>
       </div>
     </div>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
@@ -49,6 +58,9 @@
                 </div>
                 <div class="col">
                   <h5 class="card-title" style="text-transform: lowercase"> {{condition}} </h5>
+                </div>
+                <div class="col">
+                  <h5 class="card-title"> {{price}} </h5>
                 </div>
               </div>
               <p class="card-text"> {{description}} </p>
