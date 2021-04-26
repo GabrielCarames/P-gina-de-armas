@@ -23,5 +23,6 @@ exports.getAllWeaponsCategory = async (category) => {
 }
 
 exports.getAllWeaponsPrice = async (price) => {
-    return Weapon.find({'price': { $lte: price} }).lean()
+    if(price != 0) return Weapon.find({'price': { $lte: price} }).lean()
+    else return Weapon.find({}).lean()
 }
