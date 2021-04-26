@@ -4,35 +4,50 @@
   <div class="form-row" style="margin-top: 30px;">
     <div class="col-md-6 mb-3">
       <label for="validationServer01">Nombre del arma</label>
-      <input type="text" class="form-control is-valid" name="name" id="name" required>
+      <input type="text" class="form-control" name="name" id="name" required>
     </div>
     <div class="col-md-6 mb-3">
       <label for="validationServer02">Descripción</label>
-      <input type="text" class="form-control is-valid" name="description" id="description" required>
+      <input type="text" class="form-control" name="description" id="description" required>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">Precio</label>
-      <input type="text" class="form-control is-valid" name="price" id="price"
+      <input type="text" class="form-control" name="price" id="price"
         aria-describedby="validationServer03Feedback" required>
       <div id="validationServer03Feedback" class="invalid-feedback">
         Por favor ponle un precio mínimo
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationServer04">Estado</label>
-      <select class="custom-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback"
+      <label for="validationServer04">Condición</label>
+      <select name="condition" class="custom-select" id="validationServer04" aria-describedby="validationServer04Feedback"
         required>
         <option selected disabled value="">Elegir</option>
-        <option>Nuevo</option>
-        <option>Usado</option>
+        <option value="nuevo">Nuevo</option>
+        <option value="usado">Usado</option>
       </select>
       <div id="validationServer04Feedback" class="invalid-feedback">
-        Please select a valid state.
+        Por favor selecciona un estado de condición
       </div>
     </div>
-    <div class="input-group is-invalid">
+    <div class="col-md-3 mb-3">
+      <label for="validationServer04">Categoria</label>
+      <select name="category" class="custom-select" id="validationServer04" aria-describedby="validationServer04Feedback"
+        required>
+        <option selected disabled value="">Elegir</option>
+        <option value="gun">Pistola</option>
+        <option value="assault_rifle">Fusil de asalto</option>
+        <option value="shotgun">Escopeta</option>
+        <option value="sniper_rifle">Fusil de francotirador</option>
+        <option value="submachine_gun">Subfusil</option>
+      </select>
+      <div id="validationServer04Feedback" class="invalid-feedback">
+        Por favor selecciona un estado de condición
+      </div>
+    </div>
+    <div class="input-group">
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" <!--required-->>
         <label class="custom-file-label" for="validatedInputGroupCustomFile">Elegir imagen</label>
@@ -41,7 +56,7 @@
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3"
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck3"
         aria-describedby="invalidCheck3Feedback" required>
       <label class="form-check-label" for="invalidCheck3">
         Aceptar términos y condiciones
@@ -51,6 +66,6 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Subir publicación</button>
 </form>
 <hr id="spacer">

@@ -6,7 +6,7 @@ exports.isAuthenticated = (req, res, next) => {
     res.redirect('/');
 }
 
-exports.addWeapon = async (userId, newWeapon) => {
+exports.addWeaponToUser = async (userId, newWeapon) => {
     await User.findOneAndUpdate({ _id: userId },
         {
             $push: {
@@ -45,7 +45,7 @@ exports.findByEmail = async (email) => {
     return User.findOne({ 'email': email })
 }
 
-exports.getWeapons = async (userId) => {
+exports.getWeaponsFromUser = async (userId) => {
     const user = await this.findById(userId)
     return user.weapons
 }

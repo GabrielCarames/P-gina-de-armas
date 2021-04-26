@@ -16,7 +16,11 @@ const Weapon = new Schema({
     },
     condition: {
         type: String,
-        required: false
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
     },
     image: {
         type: String,

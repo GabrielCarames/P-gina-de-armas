@@ -1,19 +1,25 @@
 <link rel='stylesheet' href='/css/weapon.css' />
-<li class="nav-item">
-  <a class="nav-link" href="/weapon/uploadweapon">subiArmas</a>
-</li>
+<div class="row">
+  <div class="col">
+    <h1 style="text-align: center;">Armas</h1>
+  </div>
+</div>
 <div class="row">
   <div class="col-3" id="itemsPanel">
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Categorías</div>
       <div class="card-body">
-        <p class="card-text">Todas las categorías<br>Pistolas<br>Fusiles de asalto<br>Escopetas<br>Fusiles de francotirador<br>Subfusiles</p>
+        <p class="card-text"> <a href="/weapon/">Todas las categorías</a><br><a
+            href="/weapon/weaponcategory/gun">Pistolas</a><br><a href="/weapon/weaponcategory/assault_rifle">Fusiles de asalto</a><br>
+            <a href="/weapon/weaponcategory/shotgun">Escopetas</a><br><a href="/weapon/weaponcategory/sniper_rifle">Fusiles de
+          francotirador</a><br><a href="/weapon/weaponcategory/submachine_gun">Subfusiles</a></p>
       </div>
     </div>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Precio</div>
       <div class="card-body">
-        <p class="card-text">Cualquier rango de precio<br>Hasta $2000<br>Hasta $5000<br>Hasta $10000<br>Hasta $30000<br>Hasta $50000<br>Entre x y x</p>
+        <p class="card-text">Cualquier rango de precio<br>Hasta $2000<br>Hasta $5000<br>Hasta $10000<br>Hasta
+          $30000<br>Hasta $50000<br>Entre x y x</p>
       </div>
     </div>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
@@ -26,9 +32,41 @@
   <div class="col-6">
     <div class="row" id="weaponsPanel">
 
+      {{#each weapons}}
+      <a>
+        <div class="col-4">
+          <div class="card justify-content-center">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="{{image}}" id="weaponImage" class="img-fluid" alt=" wow">
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title"> {{name}} </h5>
+                </div>
+                <div class="col">
+                  <h5 class="card-title" style="text-transform: lowercase"> {{condition}} </h5>
+                </div>
+              </div>
+              <p class="card-text"> {{description}} </p>
+              <a href="#!" class="btn btn-primary" style="background-color: rgba(32,60,91,255);">Añadir al carrito</a>
+            </div>
+            <div class="col">
+              <p class="card-text"> {{category}} </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    {{/each}}
+
     </div>
   </div>
   <div class="col-3" id="carritoPanel">
+    <a id="uploadweapon" href="/weapon/uploadweapon" class="btn btn-primary"
+      style="vertical-align: middle;background-color: rgba(32,60,91,255);">Subir publicación de arma</a>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Carrito</div>
       <div class="card-body">
@@ -39,14 +77,20 @@
 
 </div>
 
+<div class="row">
 
-<script>
+</div>
+
+
+
+<script>/*
   var weaponsPanel = document.getElementById('weaponsPanel');
   $.get("http://localhost:3000/user/getweapons", data => {
     console.log(data.weapons)
     if (data.status) {
       $.each(data.weapons, function () {
         weaponsPanel.innerHTML +=
+          '<a>' +
           '<div class="col-4">' +
           '<div class="card justify-content-center">' +
           '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">' +
@@ -56,16 +100,64 @@
           '</a>' +
           '</div>' +
           '<div class="card-body">' +
+          '<div class="row">' +
+          '<div class="col">' +
           '<h5 class="card-title">' + this.name + '</h5>' +
-          '<p class="card-text">' + this.description +
-          '</p>' +
-          '<a href="#!" class="btn btn-primary" style="background-color: rgba(32,60,91,255);">Button</a>' +
+          '</div>' +
+          '<div class="col">' +
+          '<h5 class="card-title" style="text-transform: lowercase">' + this.condition + '</h5>' +
           '</div>' +
           '</div>' +
-          '</div>'
+          '<p class="card-text">' + this.description + '</p>' +
+          '<a href="#!" class="btn btn-primary" style="background-color: rgba(32,60,91,255);">Añadir al carrito</a>' +
+          '</div>' +
+          '<div class="col">' +
+          '<p class="card-text">' + this.category + '</p>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</a>'
       })
     } else {
       weaponsPanel.innerHTML += data.message
     }
-  })
+  })/* todo esto esta bien, pero me esta trayendo todas las armas pertenencientes al usuario logueado, mas no todas las armas de todos los usuarios.
+  estaria bien meter esto en una supuesta seccion como "mis publicaciones"
+  $.get("http://localhost:3000/user/getweapons", data => {
+    console.log(data.weapons)
+    if (data.status) {
+      $.each(data.weapons, function () {
+        weaponsPanel.innerHTML +=
+          '<a>' +
+          '<div class="col-4">' +
+          '<div class="card justify-content-center">' +
+          '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">' +
+          '<img src="' + this.image + '" id="weaponImage" class="img-fluid"" alt="wow">' +
+          '<a href="#!">' +
+          '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>' +
+          '</a>' +
+          '</div>' +
+          '<div class="card-body">' +
+          '<div class="row">' +
+          '<div class="col">' +
+          '<h5 class="card-title">' + this.name + '</h5>' +
+          '</div>' +
+          '<div class="col">' +
+          '<h5 class="card-title" style="text-transform: lowercase">' + this.condition + '</h5>' +
+          '</div>' +
+          '</div>' +
+          '<p class="card-text">' + this.description + '</p>' +
+          '<a href="#!" class="btn btn-primary" style="background-color: rgba(32,60,91,255);">Añadir al carrito</a>' +
+          '</div>' +
+          '<div class="col">' +
+            '<p class="card-text">' + this.category + '</p>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</a>'
+      })
+    } else {
+      weaponsPanel.innerHTML += data.message
+    }
+  })*/
 </script>
