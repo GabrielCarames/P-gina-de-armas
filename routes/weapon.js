@@ -25,13 +25,17 @@ router.post('/uploadweapon', async function(req, res) {
 router.get('/weaponcategory/:category', async function(req, res) {
     var category = req.params.category
     var weapons = await weaponController.getWeaponsByFilters(category, null)
-    res.render('weapon/weapons', {weapons});
+    var actualCategory = await weaponController.getActualCategory()
+    var actualPrice = await weaponController.getActualPrice()
+    res.render('weapon/weapons', {weapons, actualCategory, actualPrice});
 });
 
 router.get('/weaponprice/:price', async function(req, res) {
     var price = req.params.price
     var weapons = await weaponController.getWeaponsByFilters(null, price)
-    res.render('weapon/weapons', {weapons});
+    var actualCategory = await weaponController.getActualCategory()
+    var actualPrice = await weaponController.getActualPrice()
+    res.render('weapon/weapons', {weapons, actualCategory, actualPrice});
 });
 
 /*router.get('/weaponfilters/:category/:price', async function(req, res) {
