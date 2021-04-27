@@ -21,8 +21,33 @@ router.post('/uploadweapon', async function(req, res) {
     req.flash('messageSuccess', 'La publicación se ha creado correctamente')
     res.redirect(req.get('referer'));
 });
-//luego de hacer cada filtro individual, crear un sistema central en el que le entrarian de parametros la categoria seleccionada, rango de precio, etc
-//si se quiere filtrar por pistolas, pero con todos los precios, hacer cierto if y eso
+
+router.get('/weaponcategory/:category', async function(req, res) {
+    var category = req.params.category
+    var weapons = await weaponController.getWeaponsByFilters(category, null)
+    res.render('weapon/weapons', {weapons});
+});
+
+router.get('/weaponprice/:price', async function(req, res) {
+    var price = req.params.price
+    var weapons = await weaponController.getWeaponsByFilters(null, price)
+    res.render('weapon/weapons', {weapons});
+});
+
+/*router.get('/weaponfilters/:category/:price', async function(req, res) {
+    var category = req.params.category
+    var price = req.params.price
+    if(price == 0) price = null
+    var weapons = await weaponController.getWeaponsByFilters(category, price)
+
+
+
+    var weapons = await weaponController.getAllWeaponsPrice(price)
+    res.render('weapon/weapons', {weapons});
+});*/
+
+
+/*
 router.get('/weaponcategory/:category', async function(req, res) {
     const cuenta = req.user
     var category = req.params.category
@@ -35,5 +60,17 @@ router.get('/weaponprice/:price', async function(req, res) {
     var weapons = await weaponController.getAllWeaponsPrice(price)
     res.render('weapon/weapons', {weapons});
 });
+
+router.get('/weaponfilters/:category/:price', async function(req, res) {
+    var category = req.params.category
+    var price = req.params.price
+    if(price == 0) price = null
+    var weapons = await weaponController.getWeaponsByFilters(category, price)
+
+
+
+    var weapons = await weaponController.getAllWeaponsPrice(price)
+    res.render('weapon/weapons', {weapons});
+});*/
 
 module.exports = router;
