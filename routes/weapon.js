@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const userController = require('../controllers/userController')
-const weaponController = require('../controllers/weaponController')
+const weaponController = require('../controllers/weaponController');
 
 router.get('/', async function(req, res) {
     var weapons = await weaponController.getAllWeapons()
@@ -51,6 +51,16 @@ router.get('/weaponfilter/:category/:price', async function(req, res) {
     var actualCategory = await weaponController.getActualCategory()
     var actualPrice = await weaponController.getActualPrice()
     res.render('weapon/weapons', {weapons, actualCategory, actualPrice});
+});
+
+router.get('/addweapontocart/:weaponId', async function(req, res) {
+    const weaponId = req.params.weaponId
+    const userId = req.user._id
+    var weapon = await weaponController.findWeaponById(weaponId)
+    var user = await userController.findById(userId)
+    console.log(user)
+    await weaponController.addWeaponAndUserToCart(user, weapon)
+    //res.redirect(req.get('referer'));
 });
 
 module.exports = router;

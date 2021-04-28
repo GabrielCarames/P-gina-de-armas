@@ -1,5 +1,5 @@
 const Weapon = require("../models/weapon");
-var actualWeaponsCategoryAndPrice;
+const Cart = require("../models/cart");
 var actualCategory;
 var actualPrice;
 
@@ -28,6 +28,10 @@ exports.getAllWeapons = async () => {
   //y creo que al saltearse estos pasos tambien skipea cosas de seguridad para evitar errores. sin el lean salta un error de que no se puede acceder
   //porque no es de tu propiedad
 };
+
+exports.findWeaponById = async (id) => {
+  return await Weapon.findOne({_id: id})
+}
 
 exports.getAllWeaponsCategory = async (category) => {
   return Weapon.find({ category: category }).lean();
@@ -75,6 +79,17 @@ exports.getWeaponsByFilters = async (category, price) => {
       $and: [{ category: actualCategory }, { price: { $lte: price } }],
     }).lean();
   }
+
+  exports.addWeaponAndUserToCart = async (values) => {
+    console.log("por aca no pasas ni en pedo hijo de re mil puta")
+    const { user, weapon } = values;
+    const newCartItem = new Cart({
+      user,
+      weapon
+    });
+    await newCartItem.save();
+    return newCartItem;
+  };
 
   /*
     if(price && category) {
