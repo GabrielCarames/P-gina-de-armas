@@ -21,7 +21,7 @@ router.post('/uploadweapon', async function(req, res) {
     req.flash('messageSuccess', 'La publicación se ha creado correctamente')
     res.redirect(req.get('referer'));
 });
-
+/*
 router.get('/weaponcategory/:category', async function(req, res) {
     var category = req.params.category
     var weapons = await weaponController.getWeaponsByFilters(category, null)
@@ -36,45 +36,21 @@ router.get('/weaponprice/:price', async function(req, res) {
     var actualCategory = await weaponController.getActualCategory()
     var actualPrice = await weaponController.getActualPrice()
     res.render('weapon/weapons', {weapons, actualCategory, actualPrice});
-});
-
-/*router.get('/weaponfilters/:category/:price', async function(req, res) {
-    var category = req.params.category
-    var price = req.params.price
-    if(price == 0) price = null
-    var weapons = await weaponController.getWeaponsByFilters(category, price)
-
-
-
-    var weapons = await weaponController.getAllWeaponsPrice(price)
-    res.render('weapon/weapons', {weapons});
 });*/
 
-
-/*
-router.get('/weaponcategory/:category', async function(req, res) {
-    const cuenta = req.user
-    var category = req.params.category
-    var weapons = await weaponController.getAllWeaponsCategory(category)
-    res.render('weapon/weapons', {cuenta, weapons});
-});
-
-router.get('/weaponprice/:price', async function(req, res) {
-    var price = req.params.price
-    var weapons = await weaponController.getAllWeaponsPrice(price)
-    res.render('weapon/weapons', {weapons});
-});
-
-router.get('/weaponfilters/:category/:price', async function(req, res) {
+router.get('/weaponfilter/:category/:price', async function(req, res) {
     var category = req.params.category
     var price = req.params.price
-    if(price == 0) price = null
+    console.log("repete", category, price)
+    if(category == 'null') {
+        console.log("por aca venis A")
+        category = null
+    }
+    if(price == 'null') {console.log("por aca venisB"); price = null}
     var weapons = await weaponController.getWeaponsByFilters(category, price)
-
-
-
-    var weapons = await weaponController.getAllWeaponsPrice(price)
-    res.render('weapon/weapons', {weapons});
-});*/
+    var actualCategory = await weaponController.getActualCategory()
+    var actualPrice = await weaponController.getActualPrice()
+    res.render('weapon/weapons', {weapons, actualCategory, actualPrice});
+});
 
 module.exports = router;
