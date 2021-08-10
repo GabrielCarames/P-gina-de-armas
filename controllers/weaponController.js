@@ -50,6 +50,10 @@ exports.getActualPrice = async () => {
     return actualPrice
 };
 
+exports.getCart = async () => {
+  return await Cart.find({}).lean();
+};
+
 exports.getWeaponsByFilters = async (category, price) => {
   console.log("sosvos???")
   console.log(category, price)
@@ -80,20 +84,18 @@ exports.getWeaponsByFilters = async (category, price) => {
     }).lean();
   }
 
-  exports.addWeaponAndUserToCart = async (values) => {
-    console.log("por aca no pasas ni en pedo hijo de re mil puta")
-    const { user, weapon } = values;
-    const newCartItem = new Cart({
-      user,
-      weapon
-    });
-    await newCartItem.save();
-    return newCartItem;
-  };
-
   /*
     if(price && category) {
         if(!price) return Weapon.find({'category': category}, {'price': {$lte: price}})
         else return Weapon.find({}).lean()
     }*/
 };
+
+exports.addWeaponAndUserToCart = async (user, weapons) => {
+  const newCartItem = new Cart({
+    user,
+    weapons
+  });
+  await newCartItem.save();
+  return newCartItem;
+}

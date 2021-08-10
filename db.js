@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var url = "mongodb://localhost:27017/parchesarmas";
+var url = "mongodb+srv://GabrielCarames:Ab8azzEsDDsh4iCO@clusterparches.npjim.mongodb.net/paginadearmasdb?retryWrites=true&w=majority";
 
 mongoose.connect(url, {
     useNewUrlParser: true,
