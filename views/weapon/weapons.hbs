@@ -19,15 +19,15 @@
       </div>
     </div>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
-      <div class="card-header">Precio</div>
+      <div class="card-header">Precios</div>
       <div class="card-body">
         <p class="card-text">
-        <a href="/weapon/weaponfilter/null/0">Todos los precios</a><br>
-        <a href="/weapon/weaponfilter/null/2000">Hasta $2000</a><br>
-        <a href="/weapon/weaponfilter/null/5000">Hasta $5000</a><br>
+        <a href="/weapon/weaponfilter/null/null">Todos los precios</a><br>
+        <a href="/weapon/weaponfilter/null/500">Hasta $500</a><br>
+        <a href="/weapon/weaponfilter/null/1000">Hasta $1000</a><br>
+        <a href="/weapon/weaponfilter/null/2500">Hasta $2500</a><br>
+        <a href="/weapon/weaponfilter/null/5000">Hasta $5000</a> <br>
         <a href="/weapon/weaponfilter/null/10000">Hasta $10000</a><br>
-        <a href="/weapon/weaponfilter/null/30000">Hasta $30000</a> <br>
-        <a href="/weapon/weaponfilter/null/50000">Hasta $50000</a><br>
         <!-- <a href="/weapon/weaponprice/">Entre x y x</a>  para el rango hay que meter un campo con un boton y sacar su info del campo y paja--> 
         </p>
       </div>
@@ -35,7 +35,7 @@
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Tipo de munición</div>
       <div class="card-body">
-        <p class="card-text">Todas las municiones<br>9mm<br>7,65mm<br>a<br>a<br>a</p>
+        <p class="card-text">Todas las municiones<br>9mm<br>7,65mm</p>
       </div>
     </div>
   </div>
@@ -58,10 +58,10 @@
                   <h5 class="card-title"> {{name}} </h5>
                 </div>
                 <div class="col">
-                  <h5 class="card-title" style="text-transform: lowercase"> {{condition}} </h5>
+                  <h5 class="card-title"> Estado: {{condition}} </h5>
                 </div>
                 <div class="col">
-                  <h5 class="card-title"> {{price}} </h5>
+                  <h5 class="card-title"> Precio: ${{price}} </h5>
                 </div>
               </div>
               <p class="card-text"> {{description}} </p>

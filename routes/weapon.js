@@ -48,6 +48,7 @@ router.get('/weaponfilter/:category/:price', async function(req, res) {
     }
     if(price == 'null') {console.log("por aca venisB"); price = null}
     var weapons = await weaponController.getWeaponsByFilters(category, price)
+    console.log("so", weapons)
     var actualCategory = await weaponController.getActualCategory()
     var actualPrice = await weaponController.getActualPrice()
     res.render('weapon/weapons', {weapons, actualCategory, actualPrice});
